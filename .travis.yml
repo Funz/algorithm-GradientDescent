@@ -40,14 +40,14 @@ script:
 
 before_deploy:
   - ant clean dist
-  - cd dist; zip -r ../algorithm-MyAlgorithm.zip *; cd ..
+  - cd dist; zip -r ../algorithm-GradientDescent.zip *; cd ..
   - ant install
-  - zip -r FunzR-MyAlgorithm.zip FunzR-MyAlgorithm
+  - zip -r FunzR-GradientDescent.zip FunzR-GradientDescent
   
 deploy:
   provider: releases
   api_key:
-    secure: __PUT_YOUR_GITHUB_ACCESS_KEY_HERE__:_'travis_setup_releases_--force'_will_generate_a_correct_.travis.yml
+    secure: MuJ1Yzy1Yyh/YWIES4pyx6wlKxglXBREfrkE3BTMrW1GICHTDpIrn4/avH+t6PIBuFMyhbbESGkkE0k0kTbg87/ekgrq2vGG/KgA/jV2ZiDgHz6b8VT6gJr5mCCzRILb6Ne1awcskYtu/nzRzQMVohS+LdzaAZONayxc1GRPuDN8c1SWr+ArCh1gHfAicgu3wsFvUDvFXih6icPerpfhOyu2J/6bJdzm81NYMilIzvIcA4yclSuCT30uhLM61y7Xe1ezxRJwMZxDMNnmbwX8XAj1U3lXJk3nwyCZe+Q8mlr9kf+v9ENROuoUFYGHtQxq3difLYEI8NhBj+K/tjerasVlu09bNnGUZGEEAZ/ssOirIU7sjxhsWQCuoshqPfJovhep0VemyAnX9Lk3sTXxJ+v3ug8qeF3t7qzpav/xcrYpieCXjmRR8ATL2SEF+V/tL5fT294lqiyIv+NsdfAeDrtCQRDZnbc3HllAOuiN69SfnZCJff6/l4mavfnm4gYNa0yw8o7a+Y0cT8ZSc8X4y7Xb6afqxdqb28ZJG7TbBe8+Y5+4mPLUyf/hnZTMaRA2t/d4ZuKgX4Q2sQ7oQEz77ctjGvOsW044a4tZfJl+JoPxfKSj+vcVKGDL6B/uBk2Jo/aATfcgw76j7828EWu+5u8lKv33phZw7eMzQVKfWvw=
   file_glob: true
   file:
     - FunzR-*.zip

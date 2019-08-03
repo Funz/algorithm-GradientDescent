@@ -1,17 +1,13 @@
-[![Build Status](https://travis-ci.org/Funz/algorithm-MyAlgorithm.png)](https://travis-ci.org/Funz/algorithm-MyAlgorithm)
+[![Build Status](https://travis-ci.org/Funz/algorithm-GradientDescent.png)](https://travis-ci.org/Funz/algorithm-GradientDescent)
 
-___This repositry is intended to be forked as a basis for an new algorithm implementation.___
-___You can search for "MyAlgorithm" as a key to replace everywhere in this directory.___
+# Funz algorithm: GradientDescent
 
-# Funz algorithm: MyAlgorithm
-
-* MyAlgorithm method for ...
-* author: ...
-* ref: ...
-* tags: ...
-* options: ...
-* input: ...
-* output: ...
+* GradientDescent first-order local optimization algorithm<br/>http://en.wikipedia.org/wiki/Gradient_descent
+* author: Yann Richet
+* tags: Optimization
+* options: nmax=10; delta=0.1; epsilon=0.01; target=0.0
+* input: x=list(min=0,max=1)
+* output: y=0.99
 
 
-![Analytics](https://ga-beacon.appspot.com/UA-109580-20/algorithm-MyAlgorithm)
+![Analytics](https://ga-beacon.appspot.com/UA-109580-20/algorithm-GradientDescent)
