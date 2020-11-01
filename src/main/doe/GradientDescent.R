@@ -1,6 +1,7 @@
 #help: First-order local optimization algorithm<br/>http://en.wikipedia.org/wiki/Gradient_descent
 #tags: optimization
-#options: yminimization='false'; iterations=100; delta=1; epsilon=0.01; target=Inf; x0=''
+#options: yminimization='true'; ytol='0.1'; max_iterations=100; delta=1; epsilon=0.01; target=Inf; x0=''
+#options.help: yminimization='Minimize output value ?'; ytol='Convergence precision on output value'; max_iterations='max_iterations number'; delta='Gradient step factor (initial value)'; epsilon='Relative finite difference step'; target='Output target limit (early convergence)'; x0='Starting input values (comma separated)'
 #input: x=list(min=0,max=1)
 #output: y=0.99
 
@@ -9,7 +10,8 @@ GradientDescent <- function(opts) {
   gradientdescent = new.env()
 
   gradientdescent$yminimization <- isTRUE(as.logical(opts$yminimization))
-  gradientdescent$iterations <- as.integer(opts$iterations)
+  gradientdescent$ytol <- as.numeric(opts$ytol)
+  gradientdescent$max_iterations <- as.integer(opts$max_iterations)
   gradientdescent$delta <- as.numeric(opts$delta)
   gradientdescent$epsilon <- as.numeric(opts$epsilon)
   gradientdescent$target <- as.numeric(opts$target)
@@ -67,7 +69,7 @@ getInitialDesign <- function(algorithm,input,output) {
 #' @param Y data frame of current results
 #' @return data frame or matrix of next doe step
 getNextDesign <- function(algorithm,X,Y) {
-  if (algorithm$i > algorithm$iterations) { return(); }
+  if (algorithm$i > algorithm$max_iterations) { return(); }
 
   if (algorithm$yminimization) {
     if (min(Y[,1]) < algorithm$target) { return(); }
@@ -85,6 +87,7 @@ getNextDesign <- function(algorithm,X,Y) {
   prevYn = Y[(n-d):n,1]
 
   if (algorithm$i > 0) {
+    if (abs(Y[n-d,1] - Y[n-d-1-d,1]) < algorithm$ytol) { return(); }
     if (algorithm$yminimization) {
       if (Y[n-d,1] >= Y[n-d-1-d,1]) {
         algorithm$delta <- algorithm$delta / 2
@@ -289,7 +292,7 @@ to01 = function(X, inp) {
 # }),ncol=1)
 # f1 = function(x) f(cbind(.5,x))
 #
-# options = list(iterations = 10, delta = 0.1, epsilon = 0.01, target=0)
+# options = list(max_iterations = 10, delta = 0.1, epsilon = 0.01, target=0)
 # gd = GradientDescent(options)
 #
 # # X0 = getInitialDesign(gd, input=list(x1=list(min=0,max=1),x2=list(min=0,max=1)), NULL)
