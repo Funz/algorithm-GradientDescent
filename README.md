@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Funz/algorithm-GradientDescent.png)](https://travis-ci.org/Funz/algorithm-GradientDescent)
+[![.github/workflows/ant.yml](https://github.com/Funz/algorithm-GradientDescent/actions/workflows/ant.yml/badge.svg)](https://github.com/Funz/algorithm-GradientDescent/actions/workflows/ant.yml)
 
 # Funz algorithm: GradientDescent
 
