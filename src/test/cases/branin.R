@@ -24,7 +24,7 @@ library(testthat)
 if (!isTRUE(test_that("f(armgin.f) == f.min",{expect_equal(f(matrix(argmin1.f,nrow=1))[1,1],min.f,tolerance = .0001)}))) quit(status=1)
 
 test = function(algorithm_file) {
-    results = run.algorithm(algorithm_file, options=list(yminimization='true',x0='0.5'),fun=list(input=input.f,output=output.f,fun=f))
+    results = run.algorithm(algorithm_file, options=list(yminimization='true',x0='0.5',ytol='0.01'),fun=list(input=input.f,output=output.f,fun=f))
     if (!isTRUE(test_that("branin min",{expect_equal(as.numeric(results$min),min.f,tolerance = .1)}))) quit(status=1)
 }
 
