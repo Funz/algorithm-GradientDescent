@@ -69,7 +69,7 @@ getInitialDesign <- function(algorithm,input,output) {
 #' @param Y data frame of current results
 #' @return data frame or matrix of next doe step
 getNextDesign <- function(algorithm,X,Y) {
-  if (algorithm$i > algorithm$max_iterations) { return(); }
+  if (algorithm$i >= algorithm$max_iterations) { return(); }
 
   if (algorithm$yminimization) {
     if (min(Y[,1]) < algorithm$target) { return(); }
